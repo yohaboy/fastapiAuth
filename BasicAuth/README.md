@@ -1,88 +1,70 @@
-```markdown
 # FastAPI Basic Auth Example
 
-A minimal FastAPI application demonstrating HTTP Basic Authentication using environment variables and bcrypt password hashing.
+A minimal **FastAPI** app demonstrating **HTTP Basic Authentication** with **bcrypt** password hashing and environment-based credentials.
 
-## Features
+## 🚀 Features
 
-- HTTP Basic Authentication for endpoint security
-- Secure password hashing with bcrypt
-- User credentials configured via a `.env` file
-- Easy project settings management with pydantic-settings
+- Secure endpoints with HTTP Basic Auth
+- Password hashing using bcrypt
+- Credentials managed via `.env`
+- Simple config management with `pydantic-settings`
 
-## File Structure
+## 🛠 Tech Stack
+
+- **Framework**: FastAPI
+- **Server**: Uvicorn
+- **Config**: pydantic-settings
+- **Hashing**: bcrypt
+
+## 📂 Structure
+
 ```
-
 .
 ├── main.py
 ├── config.py
 ├── .env
-
 ```
 
-## Setup
+## 📋 Setup
 
-### 1. Clone the Repository
+### 1. Clone & Install
 
-```
-
+```bash
 git clone https://github.com/yohaboy/fastapiAuth.git
-cd BasicAuth
-
+cd fastapiAuth
+pip install fastapi uvicorn bcrypt pydantic-settings
 ```
 
-### 2. Create a `.env` File
+### 2. Create `.env`
 
-Add a `.env` file with your credentials:
-
-```
-
+```env
 USERNAME=yourusername
 PASSWORD=yourpassword
-
 ```
 
-### 3. Install Dependencies
+## ▶️ Run
 
-```
-
-pip install fastapi uvicorn bcrypt pydantic-settings
-
-```
-
-## Running the Application
-
-Start the FastAPI app with:
-
-```
-
+```bash
 fastapi run main.py
-
+# or
+uvicorn main:app --reload
 ```
 
-## Usage
+## 🔗 Usage
 
-You can test the protected endpoint using curl (replace with your credentials):
-
-```
-
+```bash
 curl -u yourusername:yourpassword http://localhost:8000/
-
 ```
 
-On correct credentials, you’ll get:
+✅ On success:
 
+```json
+{ "body": "access granted" }
 ```
 
-{"body": "access granted"}
+❌ On failure: **401 Unauthorized**
 
-```
+## ⚠️ Notes
 
-Otherwise, you will receive a 401 error.
-
-## Notes
-
-- **Never commit the `.env` file or sensitive credentials to version control.**
-- This example hashes the password at runtime. For production, use securely stored hashed passwords.
-
-```
+- Do **not** commit `.env` or credentials
+- Runtime hashing is for demo; use securely stored hashes in production
