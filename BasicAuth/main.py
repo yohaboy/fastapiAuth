@@ -4,7 +4,9 @@ from typing import Annotated
 from config import settings
 import bcrypt
 
-app = FastAPI()
+app = FastAPI(
+    title="BasicAuth"
+)
 auth = HTTPBasic()
 
 username = settings.USERNAME
